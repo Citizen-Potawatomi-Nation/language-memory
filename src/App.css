@@ -1,6 +1,13 @@
 .App {
+  border-radius: 20px;
   max-width: 1100px;
   margin: 40px auto;
+  background-size: contain;
+  background-position: center;
+  padding: 40px;
+  background-color: #ff787847;
+  backdrop-filter: blur(6px);
+  border: 3px solid #222723;
 }
 button {
   background: none;
@@ -17,9 +24,16 @@ button:hover {
   color: #fff;
 }
 .card-grid {
+  background-position: center;
   margin-top: 0;
   display: grid;
   grid-gap: 20px;
+  padding: 30px;
+  border-radius: 20px;
+  background-image: url(https://res.cloudinary.com/dzlbb8rlo/image/upload/v1685642218/Language/shutterstock_280524131_qre0jt.jpg);
+  background-size: cover;
+  background-repeat: no-repeat;
+  box-shadow: -4px 8px 11px 5px #000000c4;
 }
 .tools {
   width: 100%;

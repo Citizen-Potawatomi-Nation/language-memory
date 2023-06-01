@@ -1,9 +1,96 @@
 .level-select {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  padding: 50px;
+  background-image: url(https://res.cloudinary.com/dzlbb8rlo/image/upload/v1685643793/Language/shutterstock_1391152724_hdxdyn.jpg);
+  border-radius: 20px;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  box-shadow: -6px 8px 20px 5px #000000c4;
+}
 
+.level-select .level-card-wrapper {
+  position: relative;
+  width: 21%;
+  padding-bottom: 30%;
+  margin: 1rem;
+}
+
+.level-select .level-card {
+  position: absolute;
+  top: 0;
+  left: 0;
+  perspective: 1000px;
+  width: 100%;
+  max-height: 350px;
+  cursor: pointer;
+}
+
+.level-select .level-card.flipped .front {
+  transform: rotateY(180deg);
+}
+
+.level-select .level-card.flipped .back {
+  transform: rotateY(0deg);
+  position: absolute;
+  top:0;
+}
+
+.level-select .level-card.enlarged {
+  transform: scale(1.5);
+  transition: all 0.5s ease;
+  z-index:1000;
+}
+
+.level-select .level-card > img, .level-select .level-card > div {
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+  transition: transform 0.5s ease;
+}
+
+.level-select .level-card .front {
+  transform: rotateY(0deg);
+}
+
+.level-select .level-card .back {
+  transform: rotateY(180deg);
+  position: absolute;
+  top: 0;
+}
+
+.level-select .level-card .back button {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 15px;
+  border: 2px solid #0c4128;
+  background-color: #0c4128;
+  transition: ease-in all 0.2s;
+  cursor: pointer;
+}
+
+.level-select .level-card .back button:hover {
+  border: 2px solid #fff;
+  background-color: #fff;
+  color: #000;
+  transition: ease-in all 0.2s;
+}
+
+.level-select .level-card .back .close-btn {
+  position: absolute;
+  top: 4%;
+  color: #000;
+  right: 8%;
+  cursor: pointer;
 }
 
 .level-select img {
-  max-width: 40%;
-  margin: 0 2rem;
+  width: 100%;
   border-radius: 15px;
+  box-shadow: -5px 5px 6px #000;
 }

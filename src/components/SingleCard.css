@@ -1,27 +1,52 @@
 .card {
   position: relative;
   max-width: 200px;
+  overflow: hidden;
+  box-shadow: -3px 3px 4px 1px #000;
+  border-radius: 15px;
 }
+
 .card img {
   width: 100%;
   display: block;
-  box-shadow: 2px 2px 5px #000;
-  border-radius: 15px;
 }
+
 .card .front {
   transform: rotateY(90deg);
   transition: all ease-in 0.2s;
   position: absolute;
+  box-shadow: 2px 2px 5px #000;
 }
+
 .flipped .front {
   transform: rotateY(0deg);
   transition-delay: 0.2s;
 }
+
 .card .back {
   transition: all ease-in 0.2s;
   transition-delay: 0.2s;
+  box-shadow: 2px 2px 5px #000;
 }
+
 .flipped .back {
   transform: rotateY(90deg);
   transition-delay: 0s;
+}
+
+@keyframes glow {
+  0% {
+    box-shadow: none;
+  }
+  50% {
+    box-shadow: 0 0 5px #32CD32, 0 0 10px #32CD32, 0 0 15px #32CD32, 0 0 20px #32CD32;
+  }
+  100% {
+    box-shadow: none;
+  }
+}
+
+.card.matched {
+  animation: glow 2s ease-out forwards;
+  border-radius: 15px;
 }

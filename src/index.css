@@ -7,6 +7,9 @@ body {
   margin: 0;
   font-size: 1.5em;
   text-align: center;
-  background: #161d17;
   color: #fff;
-}
+  background-color: #161d17;
+  background-image: url("https://res.cloudinary.com/dzlbb8rlo/image/upload/v1685644560/Language/bg-repeat_r9zsge.jpg");
+  background-repeat: repeat;
+  background-position: center;
+  background-blend-mode: overlay;}
