@@ -5,7 +5,7 @@ import LevelSelect from "./components/LevelSelect";
 
 const cardsList = {
     animals: [
-        { "src": "/img/animals/bzhew-w.jpg", matched: false },
+        { "src": "/img/animals/bzhew.jpg", matched: false },
         { "src": "/img/animals/gagingezhi.jpg", matched: false },
         { "src": "/img/animals/gedgene.jpg", matched: false },
         { "src": "/img/animals/meingen.jpg", matched: false },
