@@ -1,4 +1,4 @@
-import { useEffect, useState, useCallback } from 'react'
+import { useEffect, useState, useCallback, useRef } from 'react'
 import './App.css'
 import SingleCard from "./components/SingleCard";
 import LevelSelect from "./components/LevelSelect";
@@ -50,16 +50,16 @@ const cardsList = {
         { "src": "/img/bodyparts/nzet.jpg", matched: false }
     ],
     opposites: [
-        { "src": "/img/opposites/bkonya.jpg", "matchId": "1", matched: false },
-        { "src": "/img/opposites/gizhget.jpg", "matchId": "1", matched: false },
-        { "src": "/img/opposites/dbek-gizes.jpg", "matchId": "2", matched: false },
-        { "src": "/img/opposites/gizes.jpg", "matchId": "2", matched: false },
-        { "src": "/img/opposites/gzhate.jpg", "matchId": "3", matched: false },
-        { "src": "/img/opposites/ksenya.jpg", "matchId": "3", matched: false },
-        { "src": "/img/opposites/mno-bkonya.jpg", "matchId": "4", matched: false },
-        { "src": "/img/opposites/mno-waben.jpg", "matchId": "4", matched: false },
-        { "src": "/img/opposites/ndoki.jpg", "matchId": "5", matched: false },
-        { "src": "/img/opposites/nneba.jpg", "matchId": "5", matched: false }
+        { "src": "/img/opposites/bkonya.jpg", matched: false },
+        { "src": "/img/opposites/gizhget.jpg", matched: false },
+        { "src": "/img/opposites/dbek-gizes.jpg", matched: false },
+        { "src": "/img/opposites/gizes.jpg", matched: false },
+        { "src": "/img/opposites/gzhate.jpg", matched: false },
+        { "src": "/img/opposites/ksenya.jpg", matched: false },
+        { "src": "/img/opposites/mno-bkonya.jpg", matched: false },
+        { "src": "/img/opposites/mno-waben.jpg", matched: false },
+        { "src": "/img/opposites/ndoki.jpg", matched: false },
+        { "src": "/img/opposites/nneba.jpg", matched: false }
     ]
 }
 
@@ -72,38 +72,27 @@ function App() {
     const [level, setLevel] = useState(null)
     const [cardsPerRow, setCardsPerRow] = useState(4);
     const [maxWidth, setMaxWidth] = useState('800px');
+    const [timer, setTimer] = useState(0);
+    const timerRef = useRef(null);
 
     const endGame = () => {
         setLevel(null);
         resetTurn();
         setMaxWidth('1100px');
+        clearInterval(timerRef.current); // Clear the timer
     }
 
     const shuffleCards = useCallback(() => {
         const cardImages = cardsList[level];
         const selectedCards = [];
-        const selectedMatchIds = [];
 
-        if (level === 'opposites') {
-            cardImages.forEach((card) => {
-                if (!selectedMatchIds.includes(card.matchId)) {
-                    selectedCards.push(card);
-                    const matchingCard = cardImages.find((c) => c.matchId === card.matchId && c !== card);
-                    if (matchingCard) {
-                        selectedCards.push(matchingCard);
-                        selectedMatchIds.push(card.matchId);
-                    }
-                }
-            });
-        } else {
-            const availableCards = [...cardImages];
-            while (selectedCards.length < 16) {
-                const randomIndex = Math.floor(Math.random() * availableCards.length);
-                const randomCard = availableCards[randomIndex];
-                selectedCards.push(randomCard);
-                selectedCards.push({ ...randomCard, id: Math.random() });
-                availableCards.splice(randomIndex, 1);
-            }
+        const availableCards = [...cardImages];
+        while (selectedCards.length < 16) {
+            const randomIndex = Math.floor(Math.random() * availableCards.length);
+            const randomCard = availableCards[randomIndex];
+            selectedCards.push(randomCard);
+            selectedCards.push({ ...randomCard, id: Math.random() });
+            availableCards.splice(randomIndex, 1);
         }
 
         const shuffledCards = selectedCards.sort(() => Math.random() - 0.5).map((card) => ({ ...card, id: Math.random() }));
@@ -115,10 +104,9 @@ function App() {
 
         setCardsPerRow(4);
         setMaxWidth('800px');
+
+        startTimer();
     }, [level]);
-
-
-
 
     const handleChoice = (card) => {
         const flipSoundNumber = Math.floor(Math.random() * 6) + 1;
@@ -208,11 +196,39 @@ function App() {
         setTimeout(() => setDisabled(false), 500);  // wait for 500 ms (or the time of your flip animation) before enabling the cards again
     }
 
+    const startTimer = useCallback(() => {
+        // Timer reset and start
+        setTimer(0);
+        if(timerRef.current) clearInterval(timerRef.current);
+        timerRef.current = setInterval(() => {
+            setTimer((timer) => timer + 1);
+        }, 1000);
+    }, []);
+
     useEffect(() => {
         if (level) {
             shuffleCards();
+            startTimer();
         }
-    }, [level, shuffleCards]);
+    }, [level, shuffleCards, startTimer]);
+
+    const matchedCards = cards.filter((card) => card.matched).length;
+
+    useEffect(() => {
+        if (matchedCards / 2 === 8) {
+            clearInterval(timerRef.current);
+        }
+    }, [matchedCards]);
+
+    const formatTime = (time) => {
+        const minutes = Math.floor(time / 60);
+        const seconds = time % 60;
+
+        const minutesStr = minutes < 10 ? `0${minutes}` : minutes;
+        const secondsStr = seconds < 10 ? `0${seconds}` : seconds;
+
+        return `${minutesStr}:${secondsStr}`;
+    };
 
     return (
         <div className="App" style={{ maxWidth: level ? '800px' : '1140px' }}>
@@ -231,6 +247,7 @@ function App() {
                             </button>
                         </div>
                         <div className="scoreboard">
+                            <p>Timer: {formatTime(timer)}</p>
                             <p>Turns: {turns}</p>
                         </div>
                     </div>
