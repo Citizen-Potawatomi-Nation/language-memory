@@ -109,9 +109,13 @@ function App() {
     }, [level]);
 
     const handleChoice = (card) => {
+        if (choiceOne && card.id === choiceOne.id) {
+            return;
+        }
+
         const flipSoundNumber = Math.floor(Math.random() * 6) + 1;
         const flipAudio = new Audio(`/flip${flipSoundNumber}.mp3`);
-        flipAudio.volume = 0.5; // Adjust the volume here (0.5 means 50% volume)
+        flipAudio.volume = 0.5;
 
         const playFlipAudio = () => {
             flipAudio.play();
@@ -155,7 +159,6 @@ function App() {
             playFlipAudio();
         }
     };
-
 
     useEffect(() => {
         if (choiceOne && choiceTwo) {
