@@ -28,7 +28,7 @@ function LevelSelect({ setLevel }) {
         <>
             <h2>Select a Level</h2>
             <div className="level-select">
-                {['animals', 'colors', 'bodyparts', 'opposites'].map((level, index) => (
+                {['animals', 'bodyparts', 'opposites'].map((level, index) => (
                     <div key={index} className="level-card-wrapper">
                         <div
                             className={`level-card ${flippedCard === level ? 'flipped' : ''} ${enlargedCard === level ? 'enlarged' : ''}`}
