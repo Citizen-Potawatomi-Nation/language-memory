@@ -93,7 +93,8 @@ const cardsList = {
         { "src": "/img/fruits/demen.jpg", matched: false },
         { "src": "/img/fruits/eshkwdemo.jpg", matched: false },
         { "src": "/img/fruits/mshimen.jpg", matched: false },
-        { "src": "/img/fruits/zhomnen.jpg", matched: false }
+        { "src": "/img/fruits/zhomnen.jpg", matched: false },
+        { "src": "/img/fruits/minen.jpg", matched: false }
     ]
 }
 
