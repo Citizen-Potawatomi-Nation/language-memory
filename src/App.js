@@ -23,7 +23,14 @@ const cardsList = {
         { "src": "/img/animals/kno.jpg", matched: false },
         { "src": "/img/animals/mko.jpg", matched: false },
         { "src": "/img/animals/mshike.jpg", matched: false },
-        { "src": "/img/animals/zheshko.jpg", matched: false }
+        { "src": "/img/animals/zheshko.jpg", matched: false },
+        { "src": "/img/animals/espike.jpg", matched: false },
+        { "src": "/img/animals/gaktenango.jpg", matched: false },
+        { "src": "/img/animals/gedemi.jpg", matched: false },
+        { "src": "/img/animals/gokoko.jpg", matched: false },
+        { "src": "/img/animals/kekwse.jpg", matched: false },
+        { "src": "/img/animals/sengo.jpg", matched: false },
+        { "src": "/img/animals/moze.jpg", matched: false }
     ],
     colors: [
         { "src": "/img/colors/gizhgok-nade.jpg", matched: false },
@@ -60,6 +67,33 @@ const cardsList = {
         { "src": "/img/opposites/mno-waben.jpg", matched: false },
         { "src": "/img/opposites/ndoki.jpg", matched: false },
         { "src": "/img/opposites/nneba.jpg", matched: false }
+    ],
+    nature: [
+        { "src": "/img/nature/bonimget.jpg", matched: false },
+        { "src": "/img/nature/datbek.jpg", matched: false },
+        { "src": "/img/nature/getgadek.jpg", matched: false },
+        { "src": "/img/nature/gizhek.jpg", matched: false },
+        { "src": "/img/nature/gmeyamget.jpg", matched: false },
+        { "src": "/img/nature/gzhiyaske.jpg", matched: false },
+        { "src": "/img/nature/jigwekya.jpg", matched: false },
+        { "src": "/img/nature/mishkosen.jpg", matched: false },
+        { "src": "/img/nature/mtek.jpg", matched: false },
+        { "src": "/img/nature/ngwankwet.jpg", matched: false },
+        { "src": "/img/nature/noden.jpg", matched: false },
+        { "src": "/img/nature/sen.jpg", matched: false },
+        { "src": "/img/nature/waskonedo.jpg", matched: false },
+        { "src": "/img/nature/wawasmomget.jpg", matched: false },
+        { "src": "/img/nature/zagech.jpg", matched: false },
+        { "src": "/img/nature/zheshke.jpg", matched: false }
+    ],
+    fruits: [
+        { "src": "/img/fruits/anjes.jpg", matched: false },
+        { "src": "/img/fruits/bneno.jpg", matched: false },
+        { "src": "/img/fruits/bokto.jpg", matched: false },
+        { "src": "/img/fruits/demen.jpg", matched: false },
+        { "src": "/img/fruits/eshkwdemo.jpg", matched: false },
+        { "src": "/img/fruits/mshimen.jpg", matched: false },
+        { "src": "/img/fruits/zhomnen.jpg", matched: false }
     ]
 }
 
